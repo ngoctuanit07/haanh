@@ -158,6 +158,5 @@ Step6:
 
 ## Demo:
 
-- Font-end : http://demo.s-cart.org
-- Back-end: http://demo.s-cart.org/system_admin   <code>User/pass: test/123456</code>
+- Font-end : http://thuhienstore.club/
 
