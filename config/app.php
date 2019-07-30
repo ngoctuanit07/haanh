@@ -181,7 +181,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Scart\ScartServiceProvider::class,
-		Spatie\Sitemap\SitemapServiceProvider::class
+		Spatie\Sitemap\SitemapServiceProvider::class,
+		HTMLMin\HTMLMin\Facades\HTMLMin::class
 
     ],
 

@@ -12,7 +12,6 @@
 	 */
 	Auth::routes();
 //============================
-
 //--Auth
 	Route::group(['namespace' => 'Auth', 'prefix' => 'member'], function ($router) {
 		$router->get('/login.html', 'LoginController@showLoginForm')->name('login');
