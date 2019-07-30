@@ -23,7 +23,7 @@
   </div>
 
   <div class="form_dh">
-    <form action="" method="post">
+    <form action="{{route('order') }}" method="post">
       @csrf
       <p style="display: none;"><input type="text" name="url" value="{{\Request::fullUrl()}}"
                                        required="required"/></p>
@@ -36,7 +36,7 @@
 
 
         </select>-->
-        <input type="text" id="tensanpham" name="tensanpham" placeholder="Tên sản phẩm" class="text_dh product_name" required="required"/>
+        <input type="text" id="tensanpham" name="congty" placeholder="Tên sản phẩm" class="text_dh product_name" required="required"/>
       </p>
       <p>
         <select class="select_sl" name="soluong" required="required">

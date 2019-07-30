@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8d9251972758cc64efc012fdd2c8e5f",
+    "content-hash": "5ebd405b5dc60ff154f977f47f2f7404",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3668,6 +3668,73 @@
                 "stylesheet"
             ],
             "time": "2016-07-19T19:14:21+00:00"
+        },
+        {
+            "name": "shinsenter/defer.php",
+            "version": "1.0.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shinsenter/defer.php.git",
+                "reference": "d6ad92101dc46f66fb3cb6d2f1afd8dd93a5d33c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shinsenter/defer.php/zipball/d6ad92101dc46f66fb3cb6d2f1afd8dd93a5d33c",
+                "reference": "d6ad92101dc46f66fb3cb6d2f1afd8dd93a5d33c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "symfony/http-foundation": ">2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [],
+                "psr-4": {
+                    "shinsenter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mai Nhut Tan",
+                    "email": "shin@shin.company",
+                    "homepage": "https://code.shin.company",
+                    "role": "Developer"
+                }
+            ],
+            "description": "🚀 A PHP library that focuses on minimizing payload size of HTML document and optimizing processing on the browser when rendering the web page.",
+            "keywords": [
+                "PHP Library",
+                "avoid render blocking",
+                "defer",
+                "defer php",
+                "defer.js",
+                "dom optimization",
+                "gtmetrix",
+                "lazy load",
+                "lazy loader",
+                "lazy loading",
+                "lazyload",
+                "lazyload css",
+                "lazyload facebook",
+                "lazyload font",
+                "lazyload image",
+                "lazyload js",
+                "lazyload laravel",
+                "lazyload php",
+                "lazyload video",
+                "lazyload wordpress",
+                "lazyload youtube",
+                "page speed optimization",
+                "pagespeed insight",
+                "performance",
+                "website speed optimization"
+            ],
+            "time": "2019-06-17T13:58:07+00:00"
         },
         {
             "name": "spatie/browsershot",

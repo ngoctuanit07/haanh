@@ -28,6 +28,7 @@
         "paypal/rest-api-sdk-php": "^1.13",
         "predis/predis": "^1.1",
         "renatomarinho/laravel-page-speed": "^1.8",
+        "shinsenter/defer.php": "^1.0",
         "spatie/laravel-sitemap": "^5.0.1",
         "unisharp/laravel-filemanager": "^1.9"
     },
