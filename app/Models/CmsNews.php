@@ -5,6 +5,7 @@
 	use App\Models\Language;
 	use App\Models\CmsNewsDescription;
 	use Helper;
+	use App\Models\Traits\Cacheable;
 	use Illuminate\Database\Eloquent\Model;
 	use Illuminate\Database\Schema\Blueprint;
 	use Illuminate\Support\Facades\Schema;
@@ -12,6 +13,9 @@
 	
 	class CmsNews extends Model
 	{
+		use Cacheable;
+		
+		protected $cacheTime = 10;
 		public $table = 'cms_news';
 		protected $appends = [
 			'title',

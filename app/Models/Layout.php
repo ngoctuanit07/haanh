@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Traits\Cacheable;
 class Layout extends Model
 {
     public $timestamps  = false;
+	use Cacheable;
+	
+	protected $cacheTime = 10;
     public $table       = 'layout';
     protected $fillable = ['status', 'content', 'sort', 'type', 'page', 'position', 'name'];
     /**
