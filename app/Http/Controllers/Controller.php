@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Spatie\SchemaOrg\Schema;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -19,6 +19,15 @@ class Controller extends BaseController
         $currencies    = \Helper::currencies();
         $layouts       = \Helper::layouts();
         $layoutsUrl    = \Helper::layoutsUrl();
+		$localBusiness = Schema::WebSite()
+			->name('Thu hiền Store')
+			->email('tuannguyen0719@gmail.com')
+			->url('https://thuhienstore.club/')
+			->telephone('0976522437')
+			->contactPoint(Schema::contactPoint()->areaServed('Hà Anh Shop siêu thị chuyên bán thực phẩm chức năng , các sản phẩm handmade dành cho mẹ và bé'));
+		//print_r($localBusiness->toArray()); die();
+		$scheama = $localBusiness->toArray();
+		//print_r($scheama['@context']); die();
         config(['app.name' => $configsGlobal['title']]);
         config(['mail.driver' => 'smtp']);
         config(['mail.host' => empty($configs['smtp_host']) ? env('MAIL_HOST', '') : $configs['smtp_host']]);
@@ -34,7 +43,7 @@ class Controller extends BaseController
         ]
         );
         //email
-
+		view()->share('scheama', $scheama);
         view()->share('configsGlobal', $configsGlobal);
         view()->share('configs', $configs);
         view()->share('languages', $languages);

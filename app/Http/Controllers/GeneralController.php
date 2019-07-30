@@ -12,6 +12,7 @@
 	use SEO;
 	use Mail;
 	use View;
+	use Spatie\SchemaOrg\Schema;
 	
 	class GeneralController extends Controller
 	{
@@ -54,6 +55,7 @@
 			//============end config====
 			$this->configsGlobal = $configsGlobal;
 			$this->configs = $configs;
+			
 			
 		}
 		

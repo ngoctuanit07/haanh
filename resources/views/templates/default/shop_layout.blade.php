@@ -3,7 +3,7 @@
 
 @endphp
         <!DOCTYPE html>
-<html  itemscope itemtype="http://schema.org/Article" dir="ltr" lang="{{ app()->getLocale() }}">
+<html itemscope itemtype="http://schema.org/Article" dir="ltr" lang="{{ app()->getLocale() }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +13,12 @@
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
-    <meta property="og:description" content="{{ $description??$configsGlobal['description'] }}" />
-    <meta name="DC.title" content="Thu hiền Store" />
-    <meta name="geo.region" content="VN-820" />
-    <meta name="geo.placename" content="Thuận Giao" />
-    <meta name="geo.position" content="13.290403;108.426511" />
-    <meta name="ICBM" content="13.290403, 108.426511" />
+    <meta property="og:description" content="{{ $description??$configsGlobal['description'] }}"/>
+    <meta name="DC.title" content="Thu hiền Store"/>
+    <meta name="geo.region" content="VN-820"/>
+    <meta name="geo.placename" content="Thuận Giao"/>
+    <meta name="geo.position" content="13.290403;108.426511"/>
+    <meta name="ICBM" content="13.290403, 108.426511"/>
     <script src="{{ asset(SITE_THEME_ASSET.'/js/jquery-1.12.4.js')}}"></script>
     <script src="{{ asset(SITE_THEME_ASSET.'/js/defer_plus.min.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js"></script>
@@ -35,6 +35,17 @@
         // This will lzay-load FontAwesome icons
         deferstyle('//use.fontawesome.com/releases/v5.3.1/css/all.css', 'fontawesome-css', 1000);
     </script>
+
+    <script type="application/ld+json">
+                    {
+                      "@context"        :    "{!! $scheama['@context'] ??'' !!}",
+                      "@type"           : "{!! $scheama['@type'] ??'' !!}",
+                      "name"            : "{!! $scheama['name'] ??'' !!}",
+                      "alternateName"   : "{!! $scheama['contactPoint']['areaServed'] ??'' !!}",
+                      "url":  "{!! $scheama['url'] ??'' !!}",
+
+                    }
+                </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=vietnamese"
           rel="stylesheet"/>
     <link href="{{ asset(SITE_THEME_ASSET.'/magiczoom/magiczoom.css')}}" rel="stylesheet"/>
@@ -42,26 +53,8 @@
     <link href="{{ asset(SITE_THEME_ASSET.'/bootstrap-3.2.0/css/bootstrap-theme.css')}}" rel="stylesheet"/>
     <link href="{{ asset(SITE_THEME_ASSET.'/css/style.css')}}" type="text/css" rel="stylesheet"/>
     <link href="{{ asset(SITE_THEME_ASSET.'/css/magnific-popup.css')}}" type="text/css" rel="stylesheet"/>
-
     <script type="text/javascript"> var url = "https://thuhienstore.club/";</script>
 
-    <!--<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
-    <script type="application/ld+json">
-        {
-          "@context": "http://schema.org",
-          "@type": "Organization",
-          "url": "https://thuhienstore.club/",
-          "contactPoint": [{
-            "@type": "ContactPoint",
-            "telephone": "+840976522437",
-            "contactType": "customer service"
-          }]
-        }
-
-
-
-
-    </script>-->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138697257-1"></script>
      <script> window.dataLayer = window.dataLayer || [];
 

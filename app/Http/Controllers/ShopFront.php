@@ -13,10 +13,12 @@
 	use App\Models\ShopProduct;
 	use App\Models\ShopVendor;
 	use App\Models\Contact;
+	use Spatie\SchemaOrg\Schema;
 	use SEOMeta;
 	use OpenGraph;
 	use Twitter;
 	use SEO;
+	use Helper;
 	use App\User;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
@@ -35,6 +37,7 @@
 		public function index(Request $request)
 		{
 			$news = (new CmsNews)->getItemsNews($limit = 12, $opt = 'paginate');
+			
 			return view(SITE_THEME . '.shop_home',
 				array(
 					'products_new' => (new ShopProduct)->getProducts($type = null, $limit = $this->configs['product_new'], $opt = null),
@@ -203,6 +206,14 @@
 				Twitter::setSite('@ngoctuanit07'); // site of twitter card tag
 				//Twitter::setDescription($page->title); // description of twitter card tag
 				Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
+				$localBusiness = Schema::WebSite()
+					->name($product->name)
+					->email('tuannguyen0719@gmail.com')
+					->url(route('product',['name' => Helper::strToUrl($product->name),'id'=>$id]))
+					->telephone('0976522437')
+					->contactPoint(Schema::contactPoint()->areaServed($product->description));
+				//print_r($localBusiness->toArray()); die();
+				$scheama = $localBusiness->toArray();
 				//Check product available
 				return view(SITE_THEME . '.shop_product_detail',
 					array(
@@ -210,6 +221,7 @@
 						'description' => $product->description,
 						'keyword' => $product->keyword,
 						'product' => $product,
+						'scheama' => $scheama,
 						'attributesGroup' => ShopAttributeGroup::all()->keyBy('id'),
 						'productsToCategory' => (new ShopCategory)->getProductsToCategory($id = $product->category_id, $limit = $this->configs['product_relation'], $opt = 'random', $sortBy, $sortOrder),
 						'og_image' => url($product->getImage()),
@@ -523,6 +535,7 @@
 		public function pages($key = null)
 		{
 			$page = $this->getPage($key);
+			
 			SEOMeta::setTitle($page->title);
 			//SEOMeta::setDescription($page->title);
 			SEOMeta::addMeta('article:section', 'Thiết kế website', 'property');
@@ -537,9 +550,18 @@
 			//Twitter::setDescription($page->title); // description of twitter card tag
 			Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
 			if ($page) {
+				$localBusiness = Schema::WebSite()
+					->name($page->title)
+					->email('tuannguyen0719@gmail.com')
+					->url(route('pages',['key' => $key]))
+					->telephone('0976522437')
+					->contactPoint(Schema::contactPoint()->areaServed($page->description));
+				//print_r($localBusiness->toArray()); die();
+				$scheama = $localBusiness->toArray();
 				return view(SITE_THEME . '.shop_page',
 					array(
 						'title' => $page->title,
+						'scheama' => $scheama,
 						'description' => $page->description,
 						'keyword' => $page->keyword,
 						'page' => $page,

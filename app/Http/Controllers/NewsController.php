@@ -10,6 +10,8 @@
 	use SEOMeta;
 	use OpenGraph;
 	use Twitter;
+	use Spatie\SchemaOrg\Schema;
+	use Helper;
 ## or
 	use SEO;
 	use Mail;
@@ -71,7 +73,14 @@
 				Twitter::setSite('@ngoctuanit07'); // site of twitter card tag
 				//Twitter::setDescription($page->title); // description of twitter card tag
 				Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
-			
+				$localBusiness = Schema::WebSite()
+					->name($title)
+					->email('tuannguyen0719@gmail.com')
+					->url(route('newsDetail',['name' => Helper::strToUrl($title),'id'=>$id]))
+					->telephone('0976522437')
+					->contactPoint(Schema::contactPoint()->areaServed((new CmsNews)->getDescriptionById($id)));
+				//print_r($localBusiness->toArray()); die();
+				$scheama = $localBusiness->toArray();
 				return view(SITE_THEME . '.cms_news_detail',
 					array(
 						'title' => $title,
@@ -79,6 +88,7 @@
 						'news_currently' => $news_currently,
 						'baivietkhacs' => (new CmsNews)->getBaiVietKhac($id),
 						//'count' => $countPost,
+						'scheama' => $scheama,
 						'description' => (new CmsNews)->getDescriptionById($id),
 						'keyword' => (new CmsNews)->getKeywordById($id),
 						'blogs' => (new CmsNews)->getItemsNews($limit = 4),

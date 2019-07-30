@@ -32,6 +32,7 @@
         "renatomarinho/laravel-page-speed": "^1.8",
         "shinsenter/defer.php": "^1.0",
         "spatie/laravel-sitemap": "^5.0.1",
+        "spatie/schema-org": "^2.2",
         "unisharp/laravel-filemanager": "^1.9"
     },
     "require-dev": {
