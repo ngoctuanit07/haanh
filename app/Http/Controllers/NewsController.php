@@ -7,6 +7,11 @@
 	use Illuminate\Http\Request;
 	use App\Models\CmsNews;
 	use App\Models\CmsNewsDescription;
+	use SEOMeta;
+	use OpenGraph;
+	use Twitter;
+## or
+	use SEO;
 	use Mail;
 	use View;
 	
@@ -31,11 +36,9 @@
 		public function tintuc()
 		{
 			$news = (new CmsNews)->getItemsNews($limit = 12, $opt = 'paginate');
-			
-			//print_r($news); die('33');
 			return view(SITE_THEME . '.cms_news',
 				array(
-					'title' => trans('language.blog'),
+					'title' => trans('Tin tức và sự kiện'),
 					'description' => $this->configsGlobal['description'],
 					'keyword' => $this->configsGlobal['keyword'],
 					'news' => $news,
@@ -52,9 +55,22 @@
 			//print_r($news_currently['created_at']->date); die();
 		//	$news_currently->visits()->increment();
 		//	$countPost = $news_currently->visits()->count();
+
 			if ($news_currently) {
 				$title = ($news_currently) ? $news_currently->title : trans('language.not_found');
-			
+				SEOMeta::setTitle($title);
+				//SEOMeta::setDescription($page->title);
+				SEOMeta::addMeta('article:section', $title, 'property');
+				SEOMeta::addKeyword([(new CmsNews)->getKeywordById($id)]);
+				//OpenGraph::setDescription($product->description);
+				OpenGraph::setTitle($title);
+				OpenGraph::setUrl('https://thuhienstore.club/');
+				OpenGraph::addProperty('type', 'article');
+				OpenGraph::addProperty('locale', 'vi-VN');
+				Twitter::setTitle($title); // title of twitter card tag
+				Twitter::setSite('@ngoctuanit07'); // site of twitter card tag
+				//Twitter::setDescription($page->title); // description of twitter card tag
+				Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
 			
 				return view(SITE_THEME . '.cms_news_detail',
 					array(

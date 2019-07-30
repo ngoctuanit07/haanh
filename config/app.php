@@ -182,7 +182,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Scart\ScartServiceProvider::class,
 		Spatie\Sitemap\SitemapServiceProvider::class,
-		HTMLMin\HTMLMin\Facades\HTMLMin::class
+		//HTMLMin\HTMLMin\Facades\HTMLMin::class,
+		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class
 
     ],
 
@@ -239,6 +240,11 @@ return [
         //scart
         'Helper'       => App\Scart\Helper::class,
         'FindClass'    => App\Scart\FindClass::class,
+		'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+		'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+		// or
+		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
     'debug_blacklist' => [

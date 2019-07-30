@@ -5,6 +5,11 @@
 	use App\Http\Controllers\Controller;
 	use App\Models\Subscribe;
 	use Illuminate\Http\Request;
+	use SEOMeta;
+	use OpenGraph;
+	use Twitter;
+## or
+	use SEO;
 	use Mail;
 	use View;
 	

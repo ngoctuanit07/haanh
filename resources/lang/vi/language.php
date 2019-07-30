@@ -3,7 +3,11 @@
 	
 	return [
 		'all_product' => 'Danh mục sản phẩm',
+		'homeSeo' =>[
+			'title' => 'Tinh Dầu Tràm , Chè Vằng Lợi Sữa , Thiết kế website | Thu Hiền Store',
+			'description' => 'Hà anh shop siêu thị chuyên bán đồ cho mẹ và bé ngoài ra chúng tôi còn nhận làm thêm các dịch vụ về công nghệ thông tin như thiết kế website..',
 		
+		],
 		'my_profile' => 'Trang quản lý cá nhân',
 		'my_account' => 'Tài khoản',
 		'notfound' => 'Không tìm thấy dữ liệu',

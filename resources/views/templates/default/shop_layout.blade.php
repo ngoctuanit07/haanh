@@ -2,39 +2,23 @@
     $carts = \Helper::getListCart();
 
 @endphp
-
         <!DOCTYPE html>
-<html dir="ltr" lang="{{ app()->getLocale() }}">
+<html  itemscope itemtype="http://schema.org/Article" dir="ltr" lang="{{ app()->getLocale() }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='revisit-after' content='days'/>
     <meta name="robots" content="index,follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="alternate" hreflang="vi" href="{{ \Request::fullUrl() }}"/>
-    <title>{{$title??$configsGlobal['title']}}</title>
-    <meta property="og:locale" itemprop="inLanguage" content="vi_VN"/>
-    <meta property="og:url" content="{{ \Request::fullUrl() }}"/>
-
-    <meta property="og:site_name" content="{{ $configsGlobal['title']??'' }}"/>
-    <meta property="og:image" content="{{ !empty($og_image)?$og_image:asset('images/org.jpg') }}"/>
-    <meta property="og:url" content="{{ \Request::fullUrl() }}"/>
-    <meta property="og:type" content="Website"/>
-    <meta property="og:title" content="{{ $configsGlobal['title']??'' }}"/>
-    <meta property="og:description" content="{{ $description??$configsGlobal['description'] }}"/>
-
-    <meta name="copyright" content="{{ $configsGlobal['title']??'' }}"/>
-    <meta name="author" content="Thu Hiền Store - 0984.350.829 [Mr. Tuân]">
-    <meta name="geo.placename" content="Ho Chi Minh, Viet Nam"/>
-    <meta name="geo.region" content="VN-HCM"/>
-
-
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset(SITE_THEME_ASSET.'/images/favicon.ico')}}"/>
-    <link rel="canonical" href="{{ \Request::fullUrl() }}"/>
-    <meta name="description" content="{{ $description??$configsGlobal['description'] }}">
-    <meta name="keyword" content="{{ $keyword??$configsGlobal['keyword']}}">
-    <meta property="fb:app_id" content="{{ $configsGlobal['site_fb_appID'] }}"/>
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    <meta property="og:description" content="{{ $description??$configsGlobal['description'] }}" />
+    <meta name="DC.title" content="Thu hiền Store" />
+    <meta name="geo.region" content="VN-820" />
+    <meta name="geo.placename" content="Thuận Giao" />
+    <meta name="geo.position" content="13.290403;108.426511" />
+    <meta name="ICBM" content="13.290403, 108.426511" />
     <script src="{{ asset(SITE_THEME_ASSET.'/js/jquery-1.12.4.js')}}"></script>
     <script src="{{ asset(SITE_THEME_ASSET.'/js/defer_plus.min.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js"></script>
@@ -61,7 +45,7 @@
 
     <script type="text/javascript"> var url = "https://thuhienstore.club/";</script>
 
-    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
+    <!--<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
     <script type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -77,20 +61,20 @@
 
 
 
-    </script>
-   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138697257-1"></script>
-    <script> window.dataLayer = window.dataLayer || [];
+    </script>-->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138697257-1"></script>
+     <script> window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+         function gtag() {
+             dataLayer.push(arguments);
+         }
 
-        gtag('js', new Date());
-        gtag('config', 'UA-138697257-1'); </script>-->
+         gtag('js', new Date());
+         gtag('config', 'UA-138697257-1'); </script>-->
     <!--Module meta -->
     <script type="text/javascript">
         // Alternative way to lazy load Google Tag Manager script
-        deferscript('//www.googletagmanager.com/gtag/js?id=UA-138697257-1', 'google-tag', 500, function() {
+        deferscript('//www.googletagmanager.com/gtag/js?id=UA-138697257-1', 'google-tag', 500, function () {
             // Run extra code right after the script has been loaded
             (window.dataLayer = window.dataLayer || []).push('config', 'UA-138697257-1');
         });
@@ -240,7 +224,7 @@
             }
         });
     });
-    jQuery(".buynow").click(function(){
+    jQuery(".buynow").click(function () {
         jQuery('#tensanpham').val(jQuery('.cat_right  h1').text())
     });
     jQuery('.open-popup-link').magnificPopup({

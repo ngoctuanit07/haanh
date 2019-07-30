@@ -13,6 +13,10 @@
 	use App\Models\ShopProduct;
 	use App\Models\ShopVendor;
 	use App\Models\Contact;
+	use SEOMeta;
+	use OpenGraph;
+	use Twitter;
+	use SEO;
 	use App\User;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
@@ -186,7 +190,19 @@
 				
 				$sortBy = request('sortBy') ?? null;
 				$sortOrder = request('sortOrder') ?? 'asc';
-				
+				SEOMeta::setTitle($product->name);
+				//SEOMeta::setDescription($page->title);
+				SEOMeta::addMeta('article:section', $product->name, 'property');
+				SEOMeta::addKeyword([$product->keyword]);
+					//OpenGraph::setDescription($product->description);
+				OpenGraph::setTitle($product->name);
+				OpenGraph::setUrl('https://thuhienstore.club/');
+				OpenGraph::addProperty('type', 'article');
+				OpenGraph::addProperty('locale', 'vi-VN');
+				Twitter::setTitle($product->name); // title of twitter card tag
+				Twitter::setSite('@ngoctuanit07'); // site of twitter card tag
+				//Twitter::setDescription($page->title); // description of twitter card tag
+				Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
 				//Check product available
 				return view(SITE_THEME . '.shop_product_detail',
 					array(
@@ -507,7 +523,19 @@
 		public function pages($key = null)
 		{
 			$page = $this->getPage($key);
-			//print_r($page); die();
+			SEOMeta::setTitle($page->title);
+			//SEOMeta::setDescription($page->title);
+			SEOMeta::addMeta('article:section', 'Thiết kế website', 'property');
+			SEOMeta::addKeyword([$page->keyword]);
+		//	OpenGraph::setDescription($page->title);
+			OpenGraph::setTitle($page->title);
+			OpenGraph::setUrl('https://thuhienstore.club/');
+			OpenGraph::addProperty('type', 'article');
+			OpenGraph::addProperty('locale', 'vi-VN');
+			Twitter::setTitle($page->title); // title of twitter card tag
+			Twitter::setSite('@ngoctuanit07'); // site of twitter card tag
+			//Twitter::setDescription($page->title); // description of twitter card tag
+			Twitter::setUrl('https://thuhienstore.club/'); // url of twitter card tag
 			if ($page) {
 				return view(SITE_THEME . '.shop_page',
 					array(
