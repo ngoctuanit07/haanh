@@ -16,6 +16,7 @@
         "aws/aws-sdk-php": "~3.0",
         "awssat/laravel-visits": "^1.5",
         "barryvdh/laravel-dompdf": "^0.8.2",
+        "biscolab/laravel-recaptcha": "^3.0",
         "encore/laravel-admin": "^1.5",
         "facebook/graph-sdk": "^5.7",
         "fideloper/proxy": "^4.0",

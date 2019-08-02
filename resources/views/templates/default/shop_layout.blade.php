@@ -35,7 +35,7 @@
         // This will lzay-load FontAwesome icons
         deferstyle('//use.fontawesome.com/releases/v5.3.1/css/all.css', 'fontawesome-css', 1000);
     </script>
-
+    {!! htmlScriptTagJsApi(/* $formId - INVISIBLE version only */) !!}
     <script type="application/ld+json">
                     {
                       "@context"        :    "{!! $scheama['@context'] ??'' !!}",
@@ -225,6 +225,16 @@
         midClick: true,
         mainClass: 'mfp-fade'
     });
+
+    jQuery(".contact").click(function () {
+        if(!jQuery('.g-recaptcha-response').val()){
+            alert("Vui lòng nhấn recapcha");
+            event.preventDefault();
+            return;
+        }
+      //  jQuery('#tensanpham').val(jQuery('.cat_right  h1').text())
+    });
+
 </script>
 
 <!--Module bottom -->

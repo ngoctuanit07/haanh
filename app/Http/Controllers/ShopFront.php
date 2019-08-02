@@ -197,7 +197,7 @@
 				//SEOMeta::setDescription($page->title);
 				SEOMeta::addMeta('article:section', $product->name, 'property');
 				SEOMeta::addKeyword([$product->keyword]);
-					//OpenGraph::setDescription($product->description);
+				//OpenGraph::setDescription($product->description);
 				OpenGraph::setTitle($product->name);
 				OpenGraph::setUrl('https://thuhienstore.club/');
 				OpenGraph::addProperty('type', 'article');
@@ -209,7 +209,7 @@
 				$localBusiness = Schema::WebSite()
 					->name($product->name)
 					->email('tuannguyen0719@gmail.com')
-					->url(route('product',['name' => Helper::strToUrl($product->name),'id'=>$id]))
+					->url(route('product', ['name' => Helper::strToUrl($product->name), 'id' => $id]))
 					->telephone('0976522437')
 					->contactPoint(Schema::contactPoint()->areaServed($product->description));
 				//print_r($localBusiness->toArray()); die();
@@ -460,6 +460,7 @@
 				'title' => 'required',
 				'content' => 'required',
 				'email' => 'required|email',
+				'g-recaptcha-response' => 'recaptcha',
 				'phone' => 'required|regex:/^0[^0][0-9\-]{7,13}$/',
 			], [
 				'name.required' => trans('validation.required'),
@@ -480,44 +481,47 @@
 				$dataRequest['name'] = $data['name'];
 				$dataRequest['email'] = $data['email'];
 				$dataRequest['phone'] = $data['phone'];
-					$dataRequest['content'] = $data['content'];
+				$dataRequest['content'] = $data['content'];
 				$data['content'] = str_replace("\n", "<br>", $data['content']);
-				
-				if (\Helper::configs()['contact_to_admin']) {
-					$checkContent = (new EmailTemplate)->where('group', 'contact_to_admin')->where('status', 1)->first();
-					if ($checkContent) {
-						$content = $checkContent->text;
-						$dataFind = [
-							'/\{\{\$title\}\}/',
-							'/\{\{\$name\}\}/',
-							'/\{\{\$email\}\}/',
-							'/\{\{\$phone\}\}/',
-							'/\{\{\$content\}\}/',
-						];
-						$dataReplace = [
-							$data['title'],
-							$data['name'],
-							$data['email'],
-							$data['phone'],
-							$data['content'],
-						];
-						$content = preg_replace($dataFind, $dataReplace, $content);
-						$data_email = [
-							'content' => $content,
-						];
+				//print_r($data); die();
+				if (isset($data['g-recaptcha-response']) && $data['g-recaptcha-response']) {
+					if (\Helper::configs()['contact_to_admin']) {
+						$checkContent = (new EmailTemplate)->where('group', 'contact_to_admin')->where('status', 1)->first();
+						if ($checkContent) {
+							$content = $checkContent->text;
+							$dataFind = [
+								'/\{\{\$title\}\}/',
+								'/\{\{\$name\}\}/',
+								'/\{\{\$email\}\}/',
+								'/\{\{\$phone\}\}/',
+								'/\{\{\$content\}\}/',
+							];
+							$dataReplace = [
+								$data['title'],
+								$data['name'],
+								$data['email'],
+								$data['phone'],
+								$data['content'],
+							];
+							$content = preg_replace($dataFind, $dataReplace, $content);
+							$data_email = [
+								'content' => $content,
+							];
+							
+							$config = [
+								'to' => $this->configsGlobal['email'],
+								'replyTo' => $data['email'],
+								'subject' => $data['title'],
+							];
+							\Helper::sendMail('mail.contact_to_admin', $data_email, $config, []);
+						}
 						
-						$config = [
-							'to' => $this->configsGlobal['email'],
-							'replyTo' => $data['email'],
-							'subject' => $data['title'],
-						];
-						\Helper::sendMail('mail.contact_to_admin', $data_email, $config, []);
 					}
-					
+					if (isset($dataRequest) && count($dataRequest) > 0) {
+						Contact::insert($dataRequest);
+					}
 				}
-				if (isset($dataRequest) && count($dataRequest) > 0) {
-					Contact::insert($dataRequest);
-				}
+				
 			} catch (\Exception $e) {
 				echo $e->getMessage();
 				die();
@@ -540,7 +544,7 @@
 			//SEOMeta::setDescription($page->title);
 			SEOMeta::addMeta('article:section', 'Thiết kế website', 'property');
 			SEOMeta::addKeyword([$page->keyword]);
-		//	OpenGraph::setDescription($page->title);
+			//	OpenGraph::setDescription($page->title);
 			OpenGraph::setTitle($page->title);
 			OpenGraph::setUrl('https://thuhienstore.club/');
 			OpenGraph::addProperty('type', 'article');
@@ -553,7 +557,7 @@
 				$localBusiness = Schema::WebSite()
 					->name($page->title)
 					->email('tuannguyen0719@gmail.com')
-					->url(route('pages',['key' => $key]))
+					->url(route('pages', ['key' => $key]))
 					->telephone('0976522437')
 					->contactPoint(Schema::contactPoint()->areaServed($page->description));
 				//print_r($localBusiness->toArray()); die();

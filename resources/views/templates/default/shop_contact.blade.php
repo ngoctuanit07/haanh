@@ -81,10 +81,14 @@
                                                 @endif
 
                                             </div>
+                                            <div class="col-sm-12">
+                                                {!! htmlFormSnippet() !!}
+                                            </div>
+
                                         </div>
                                         <div class="btn-toolbar form-group">
-                                            <input type="submit" value="{{ trans('language.contact_form.submit') }}"
-                                                   class="btn btn-primary">
+                                            <input type="submit"  value="{{ trans('language.contact_form.submit') }}"
+                                                   class="btn btn-primary contact">
                                         </div>
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e734584033adb82b3e0fb973050c22b1",
+    "content-hash": "478f3ba495f1eecf2c403894420eb08c",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -285,6 +285,60 @@
                 "pdf"
             ],
             "time": "2019-02-26T18:07:43+00:00"
+        },
+        {
+            "name": "biscolab/laravel-recaptcha",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/biscolab/laravel-recaptcha.git",
+                "reference": "7b9b82209677af981fef0805c4c5194e0e1b91e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/biscolab/laravel-recaptcha/zipball/7b9b82209677af981fef0805c4c5194e0e1b91e7",
+                "reference": "7b9b82209677af981fef0805c4c5194e0e1b91e7",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.5",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "6.*|7.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Biscolab\\ReCaptcha\\ReCaptchaServiceProvider"
+                    ],
+                    "aliases": {
+                        "ReCaptcha": "Biscolab\\ReCaptcha\\Facades\\ReCaptcha"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Biscolab\\ReCaptcha\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roberto Belotti",
+                    "email": "boby.belotti@gmail.com"
+                }
+            ],
+            "description": "Simple ReCaptcha package for Laravel 5",
+            "time": "2019-07-22T22:15:57+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
