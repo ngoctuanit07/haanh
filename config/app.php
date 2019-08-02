@@ -183,7 +183,8 @@ return [
         App\Scart\ScartServiceProvider::class,
 		Spatie\Sitemap\SitemapServiceProvider::class,
 		//HTMLMin\HTMLMin\Facades\HTMLMin::class,
-		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class
+		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+		Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ],
 
@@ -245,6 +246,7 @@ return [
 		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
 		// or
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+		'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
     ],
 
     'debug_blacklist' => [
