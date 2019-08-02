@@ -91,7 +91,7 @@
             40 </b>
           - Tổng lượt truy cập:
           <b>
-            1,555,503,411 </b>
+            {{$analytics}} </b>
         </p>
 
         <p class="design_by">
