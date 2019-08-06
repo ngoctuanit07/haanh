@@ -91,12 +91,12 @@
             40 </b>
           - Tổng lượt truy cập:
           <b>
-            {{$analytics}} </b>
+            3</b>
         </p>
 
         <p class="design_by">
           Design by
-          <a href="https://thuhienstore.club/" target="_blank"
+          <a href="{{ \Request::fullUrl() }}" target="_blank"
              title="Thiết kế website chuyên nghiệp giá tốt - Thu Hiền Store [0976.522.437]"
              class="color_yellow">
             Thu Hiền Store
@@ -113,11 +113,11 @@
           <li>
             <a href="{{ \Request::fullUrl() }}" title="Trang chủ">Trang chủ</a>
           </li>
-          <li>
+          <!--<li>
             <a href="/about.html" title="Giới thiệu">Giới thiệu</a>
-          </li>
+          </li>-->
           <li>
-            <a href="/news.html" title="Tin tức & Sự kiện">Tin tức &
+            <a href="{{route('news')}}" title="Tin tức & Sự kiện">Tin tức &
               Sự kiện</a>
           </li>
           <li>

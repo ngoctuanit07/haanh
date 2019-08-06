@@ -68,13 +68,15 @@
 		{
 			$query = (new CmsNews)->where('status', 1)->sort();
 			if (!(int)$limit) {
-				return $query->get();
-			} else
+				return $query->paginate(8);
+			} else{
 				if ($opt == 'paginate') {
 					return $query->paginate((int)$limit);
 				} else {
 					return $query->limit($limit)->get();
 				}
+			}
+			
 			
 		}
 		

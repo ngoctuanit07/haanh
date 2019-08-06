@@ -31,8 +31,8 @@ class Controller extends BaseController
 		$scheama = $localBusiness->toArray();
 		//print_r($scheama['@context']); die();
 		//fetch the most visited pages for today and the past week
-		$Analytics = Analytics::fetchMostVisitedPages(Period::days(7));
-		//print_r($Analytics); die();
+	//	$Analytics = Analytics::fetchMostVisitedPages(Period::days(7));
+	//	print_r($Analytics); die();
         config(['app.name' => $configsGlobal['title']]);
         config(['mail.driver' => 'smtp']);
         config(['mail.host' => empty($configs['smtp_host']) ? env('MAIL_HOST', '') : $configs['smtp_host']]);
@@ -48,7 +48,7 @@ class Controller extends BaseController
         ]
         );
         //email
-		view()->share('analytics', $Analytics[0]['pageViews']);
+		//view()->share('analytics', $Analytics[0]['pageViews']);
 		view()->share('scheama', $scheama);
         view()->share('configsGlobal', $configsGlobal);
         view()->share('configs', $configs);

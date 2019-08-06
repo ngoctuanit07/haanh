@@ -9,6 +9,7 @@
 		
 		],
 		'my_profile' => 'Trang quản lý cá nhân',
+		'contact' => 'Liên hệ',
 		'my_account' => 'Tài khoản',
 		'notfound' => 'Không tìm thấy dữ liệu',
 		'empty_product' => 'Không có sản phẩm nào!',

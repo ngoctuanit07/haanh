@@ -36,7 +36,7 @@
 		 */
 		public function index(Request $request)
 		{
-			$news = (new CmsNews)->getItemsNews($limit = 12, $opt = 'paginate');
+			$news = (new CmsNews)->getItemsNews($limit = '', $opt = 'paginate');
 			
 			return view(SITE_THEME . '.shop_home',
 				array(

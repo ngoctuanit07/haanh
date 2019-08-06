@@ -54,7 +54,8 @@
             @foreach ($categories[0] as $key => $category)
                 <div class="col-md-12 col-sm-12 col-xs-12 home_title">
                     <h2>{{$category->name}}</h2>
-                    <img data-sizes="100w" src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" data-src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" alt="{{$category->name}}"/>
+                    <img data-sizes="100w" src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}"
+                         data-src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" alt="{{$category->name}}"/>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 home_readmore">
                     <a href="{{$category->getUrl()}}" title="Xem tất cả">Xem tất cả</a>
@@ -83,7 +84,8 @@
         <div class="container">
             <div class="col-md-12 col-sm-12 col-xs-12 home_title">
                 <h3>Tin tức & Sự kiện</h3>
-                <img data-sizes="100w" src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" data-src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" alt="thu hien store"/>
+                <img data-sizes="100w" src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}"
+                     data-src="{{ asset(SITE_THEME_ASSET.'/images/border-bottom.png')}}" alt="thu hien store"/>
             </div>
 			<?php
 			//print_r(count($news)); die();
@@ -111,6 +113,16 @@
 				<?php endif;?>
 				<?php $item++?>
             @endforeach
+            <div class="col-md-12 col-sm-12 col-xs-12 text_align_center">
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div class="pagination">
+                        {{ $news->links() }}
+                    </div>
+                </div>
+                <!-- Pagination -->
+
+            </div>
         </div>
     </div>
 @endsection

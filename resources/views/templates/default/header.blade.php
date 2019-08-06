@@ -60,6 +60,7 @@
                             </ul>
                         </a></li>
                     <li><a href="{{ route('news') }}">{{ trans('language.blog') }}</a></li>
+                    <li><a href="/contact.html">{{ trans('language.contact') }}</a></li>
 
                 </ul>
 

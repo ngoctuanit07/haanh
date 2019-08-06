@@ -10,6 +10,8 @@
 	use SEOMeta;
 	use OpenGraph;
 	use Twitter;
+	use Analytics;
+	use Spatie\Analytics\Period;
 	use Spatie\SchemaOrg\Schema;
 	use Helper;
 ## or
@@ -37,7 +39,7 @@
 		
 		public function tintuc()
 		{
-			$news = (new CmsNews)->getItemsNews($limit = 12, $opt = 'paginate');
+			$news = (new CmsNews)->getItemsNews($limit = "", $opt = 'paginate');
 			return view(SITE_THEME . '.cms_news',
 				array(
 					'title' => trans('Tin tức và sự kiện'),
@@ -57,7 +59,8 @@
 			//print_r($news_currently['created_at']->date); die();
 		//	$news_currently->visits()->increment();
 		//	$countPost = $news_currently->visits()->count();
-
+			$Analytics = Analytics::fetchMostVisitedPages(Period::days(7));
+			//print_r($Analytics); die();
 			if ($news_currently) {
 				$title = ($news_currently) ? $news_currently->title : trans('language.not_found');
 				SEOMeta::setTitle($title);
@@ -84,6 +87,7 @@
 				return view(SITE_THEME . '.cms_news_detail',
 					array(
 						'title' => $title,
+					'analytics' => $Analytics,
 					//	'ngaydang'=>$ngayDang->date,
 						'news_currently' => $news_currently,
 						'baivietkhacs' => (new CmsNews)->getBaiVietKhac($id),
